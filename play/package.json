@@ -1,0 +1,14 @@
+{
+  "name": "@db-plus/play",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "serve": "vite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.14"
+  }
+}
