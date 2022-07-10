@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "target": "es6",
+    "allowJs": false,
+    "target": "esnext",
     "module": "esnext",
-    "checkJs": true,
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -11,10 +10,12 @@
     "skipLibCheck": true,
     "esModuleInterop": true, // 支持es6的import,commonjs的require
     "sourceMap": true,
-    "noEmit": true,
-    "noLib": false,
-    "isolatedModules": true,
+    // "noEmit": false, // 不生成文件
+    // "noLib": false, //
+    // "isolatedModules": true, // 单文件编译, true: 不生产文件, false: 生成文件
     "lib": ["esnext", "dom"],
+    "baseUrl": ".",
+    "noUnusedLocals": true, // 禁止未使用的变量被声明
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true, // 装饰器语法
     "forceConsistentCasingInFileNames": true, // 强制区分大小写
