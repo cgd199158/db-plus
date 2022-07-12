@@ -1,4 +1,5 @@
-import path from 'path';
+import { resolve } from 'path';
 
-export const projectRoot = path.resolve(__dirname, '../../');
-export const outDir = path.resolve(__dirname, '../../dist/');
+export const projectRoot = resolve(__dirname, '../../');
+export const buildOutput = resolve(projectRoot, 'dist');
+export const dpOutput = resolve(buildOutput, 'db');

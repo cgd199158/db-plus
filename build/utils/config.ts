@@ -1,5 +1,5 @@
 import path from 'path';
-import { outDir } from './paths';
+import { buildOutput } from './paths';
 
 export const buildConfig = {
   esm: {
@@ -8,7 +8,7 @@ export const buildConfig = {
     ext: 'mjs',
     output: {
       name: 'es', // 打包到dist目录下的那个目录
-      path: path.resolve(outDir, 'es'),
+      path: path.resolve(buildOutput, 'es'),
     },
     bundle: {
       path: `db-plus/es`,
@@ -20,7 +20,7 @@ export const buildConfig = {
     ext: 'js',
     output: {
       name: 'lib',
-      path: path.resolve(outDir, 'lib'),
+      path: path.resolve(buildOutput, 'lib'),
     },
     bundle: {
       path: `db-plus/lib`,

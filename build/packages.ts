@@ -1,8 +1,8 @@
 // 专门打包util,指令,hooks的
 import { series, parallel, src, dest } from 'gulp';
-import path, { resolve } from 'path';
+import path from 'path';
 import { buildConfig } from './utils/config';
-import { projectRoot, outDir } from './utils/paths';
+import { projectRoot, buildOutput } from './utils/paths';
 import ts from 'gulp-typescript';
 import { widthTaskName } from './utils/index';
 
@@ -31,7 +31,7 @@ export const buildPackages = (dirname: string, name: string) => {
       }),
       widthTaskName(`copy: ${dirname}`, () => {
         // 放到es => utils 和 lib => utils
-        return src(`${output}/**`).pipe(dest(path.resolve(outDir, config.output.name, name)));
+        return src(`${output}/**`).pipe(dest(path.resolve(buildOutput, config.output.name, name)));
       }),
     );
   });

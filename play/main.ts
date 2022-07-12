@@ -1,9 +1,8 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import DbIcon from '@db-plus/components/icon';
-import '@db-plus/theme-chalk/src/index.scss';
-
+import DbPlus from 'db-plus/index.js';
+console.log('DbPlus', DbPlus);
 const app = createApp(App);
-app.use(DbIcon);
+// app.use(DbPlus);
 
 app.mount('#app');

@@ -1,11 +1,12 @@
 {
   "name": "@db-plus/components",
   "version": "1.0.0",
-  "description": "",
+  "description": "all components are settled here",
   "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "module": "index.ts",
+  "peerDependencies": {
+    "vue": "^3.2.0"
   },
-  "author": "",
-  "license": "ISC"
+  "sideEffects": false,
+  "scripts": {}
 }

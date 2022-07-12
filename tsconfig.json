@@ -1,26 +1,28 @@
 {
   "compilerOptions": {
-    "allowJs": false,
     "target": "esnext",
     "module": "esnext",
+    "allowJs": false,
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "esModuleInterop": true, // 支持es6的import,commonjs的require
-    "sourceMap": true,
-    // "noEmit": false, // 不生成文件
-    // "noLib": false, //
-    // "isolatedModules": true, // 单文件编译, true: 不生产文件, false: 生成文件
-    "lib": ["esnext", "dom"],
-    "baseUrl": ".",
-    "noUnusedLocals": true, // 禁止未使用的变量被声明
+    "noUnusedLocals": true, //
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true, // 装饰器语法
-    "forceConsistentCasingInFileNames": true, // 强制区分大小写
-    "resolveJsonModule": true, // 解析json文件
-    "skipDefaultLibCheck": true // 忽略默认库
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": ["./*"],
+      "@db-plus/*": ["common/*/src"],
+      "db-plus": ["components"]
+    },
+    "lib": ["esnext", "dom"]
   },
+  "include": ["packages/components"],
   "exclude": ["node_modules"]
 }

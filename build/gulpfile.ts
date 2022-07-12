@@ -1,6 +1,6 @@
 // 串行(series)和并行(parallel)
 
-import { series, parallel } from 'gulp';
+import { series } from 'gulp';
 import { widthTaskName, run } from './utils';
 
 // gulp 不叫打包 做代码转转化
