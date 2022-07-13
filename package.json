@@ -10,6 +10,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@db-plus/hooks": "workspace:^1.0.0",
     "@types/gulp": "^4.0.9",
     "@types/gulp-autoprefixer": "^0.0.33",
     "@types/gulp-clean-css": "^4.3.0",

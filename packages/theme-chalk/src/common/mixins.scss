@@ -1,0 +1,39 @@
+@use './var.scss' as *;
+
+@mixin basis {
+  font-size: get-css-var('font-size-base');
+  line-height: get-css-var('line-height-base');
+  color: get-css-var('content-color-base');
+  vertical-align: middle;
+
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+@mixin fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin inner-fixed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin clear-both {
+  &::before,
+  &::after {
+    display: table;
+    content: '';
+  }
+}

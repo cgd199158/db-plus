@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@db-plus/components': workspace:^1.0.0
       '@db-plus/config': workspace:^1.0.0
+      '@db-plus/hooks': workspace:^1.0.0
       '@db-plus/theme-chalk': workspace:^1.0.0
       '@db-plus/utils': workspace:^1.0.0
       '@types/gulp': ^4.0.9
@@ -31,6 +32,7 @@ importers:
       '@db-plus/theme-chalk': link:packages/theme-chalk
       '@db-plus/utils': link:packages/utils
     devDependencies:
+      '@db-plus/hooks': link:packages/hooks
       '@types/gulp': 4.0.9
       '@types/gulp-autoprefixer': 0.0.33
       '@types/gulp-clean-css': 4.3.0
@@ -50,7 +52,12 @@ importers:
       vue: 3.2.37
 
   docs:
-    specifiers: {}
+    specifiers:
+      '@db-plus/hooks': workspace:^1.0.0
+      vue-router: ^4.1.2
+    dependencies:
+      '@db-plus/hooks': link:../packages/hooks
+      vue-router: 4.1.2_vue@3.2.37
 
   packages/components:
     specifiers: {}
@@ -621,6 +628,10 @@ packages:
       '@vue/compiler-dom': 3.2.37
       '@vue/shared': 3.2.37
     dev: true
+
+  /@vue/devtools-api/6.2.1:
+    resolution: {integrity: sha512-OEgAMeQXvCoJ+1x8WyQuVZzFo0wcyCmUR3baRVLmKBo1LmYZWMlRiXlux5jd0fqVJu6PfDbOrZItVqUEzLobeQ==}
+    dev: false
 
   /@vue/reactivity-transform/3.2.37:
     resolution: {integrity: sha512-IWopkKEb+8qpu/1eMKVeXrK0NLw9HicGviJzhJDEyfxTR9e1WtpnnbYkJWurX6WwoFP0sz10xQg8yL8lgskAZg==}
@@ -3632,6 +3643,15 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /vue-router/4.1.2_vue@3.2.37:
+    resolution: {integrity: sha512-5BP1qXFncVRwgV/XnqzsKApdMjQPqWIpoUBdL1ynz8HyLxIX/UDAx7Ql2BjmA5CXT/p61JfZvkpiFWFpaqcfag==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.2.1
+      vue: 3.2.37
+    dev: false
 
   /vue/3.2.37:
     resolution: {integrity: sha512-bOKEZxrm8Eh+fveCqS1/NkG/n6aMidsI6hahas7pa0w/l7jkbssJVsRhVDs07IdDq7h9KHswZOgItnwJAgtVtQ==}
