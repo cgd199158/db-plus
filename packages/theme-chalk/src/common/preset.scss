@@ -1,0 +1,65 @@
+@use 'sass:map';
+
+@use './var.scss' as *;
+// @use './animation';
+
+:root {
+  @include defineCssVar('color-black', $color-black);
+  @include defineCssVar('color-white', $color-white);
+
+  @each $type in $types {
+    @include defineTypeColor($type);
+  }
+
+  @include definePresetValues('content-color', $content-color-map);
+  @include definePresetValues('bg-color', $bg-color-map);
+  @include definePresetValues('border-color', $border-color-map);
+
+  @include defineCssVar('border-width', $border-width);
+  @include defineCssVar('border-style', $border-style);
+  @include defineCssVar('border-shape', $border-shape);
+
+  @each $name in map.keys($border-color-map) {
+    @include defineCssVar(
+      ('border', $name),
+      getCssVar('border-shape') getCssVar('border-color', $name)
+    );
+  }
+
+  @include definePresetValues('fill-color', $fill-color-map);
+  @include definePresetValues('font-size', $font-size-map);
+  @include definePresetValues('line-height', $line-height-map);
+  @include definePresetValues('radius', $radius-map);
+
+  @include defineCssVar('shadow-x', $shadow-x);
+  @include defineCssVar('shadow-y', $shadow-y);
+  @include defineCssVar('shadow-blur', $shadow-blur);
+  @include defineCssVar('shadow-shape', $shadow-shape);
+  @include defineCssVar('shadow-base', $shadow-base);
+
+  @include definePresetValues('shadow-color', $shadow-color-map);
+
+  @each $name in map.keys($shadow-color-map) {
+    @include defineCssVar(
+      ('shadow', $name),
+      getCssVar('shadow-shape') getCssVar('shadow-color', $name)
+    );
+  }
+
+  @include defineCssVar('shadow-border', $shadow-border);
+  @include defineCssVar('shadow-focus', $shadow-focus);
+
+  @include defineCssVar('transition-duration', $transition-duration);
+  @include defineCssVar('transition-timing', $transition-timing);
+  @include defineCssVar('transition-base', $transition-base);
+
+  @include definePresetValues('transition', $transition-map);
+  @include definePresetValues('z-index', $z-index-map);
+  @include definePresetValues('break-point', $break-point-map, true);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}

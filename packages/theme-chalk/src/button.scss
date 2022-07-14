@@ -1,0 +1,330 @@
+@use 'sass:map';
+@use './common/mixins.scss' as *;
+@use './common/var.scss' as *;
+
+$button: () !default;
+$button: map.merge(
+  (
+    color: getCssVar('content-color-base'),
+    color-hover: getCssVar('color-primary-light-2'),
+    color-focus: getCssVar('color-primary-light-2'),
+    color-active: getCssVar('color-primary-dark-1'),
+    color-disabled: getCssVar('content-color-disabled'),
+    bg-color: getCssVar('fill-color-base'),
+    bg-color-hover: getCssVar('button-bg-color'),
+    bg-color-focus: getCssVar('button-bg-color'),
+    bg-color-active: getCssVar('button-bg-color'),
+    bg-color-disabled: getCssVar('fill-color-background'),
+    b-color: getCssVar('border-color-base'),
+    b-color-hover: getCssVar('color-primary-light-2'),
+    b-color-focus: getCssVar('color-primary-light-2'),
+    b-color-active: getCssVar('color-primary-dark-1'),
+    b-color-disabled: getCssVar('border-color-light-1'),
+    color-ghost: rgba(#fff, 0.8),
+    color-hover-ghost: getCssVar('color-primary-base'),
+    color-focus-ghost: getCssVar('color-primary-base'),
+    color-active-ghost: getCssVar('color-primary-base'),
+    color-disabled-ghost: getCssVar('content-color-disabled'),
+    bg-color-ghost: transparent,
+    bg-color-hover-ghost: getCssVar('button-bg-color-ghost'),
+    bg-color-focus-ghost: getCssVar('button-bg-color-ghost'),
+    bg-color-active-ghost: getCssVar('button-bg-color-ghost'),
+    bg-color-disabled-ghost: getCssVar('button-bg-color-ghost'),
+    b-color-ghost: rgba(#fff, 0.6),
+    b-color-hover-ghost: getCssVar('color-primary-base'),
+    b-color-active-ghost: getCssVar('color-primary-base'),
+    b-color-disabled-ghost: getCssVar('content-color-disabled'),
+    color-typed: getCssVar('color-white'),
+    color-hover-typed: getCssVar('button-color-typed'),
+    color-focus-typed: getCssVar('button-color-typed'),
+    color-active-typed: getCssVar('button-color-typed'),
+    color-disabled-typed: getCssVar('content-color-disabled'),
+    bg-color-disabled-typed: getCssVar('fill-color-background'),
+    b-color-disabled-typed: getCssVar('border-color-light-1'),
+    color-focus-typed-simple: getCssVar('color-white'),
+    color-active-typed-simple: getCssVar('color-white'),
+    color-disabled-typed-simple: getCssVar('content-color-disabled'),
+    bg-color-disabled-typed-simple: getCssVar('fill-color-background'),
+    b-color-disabled-typed-simple: getCssVar('border-color-light-1'),
+    color-disabled-typed-ghost: getCssVar('button-color-disabled-ghost'),
+    bg-color-typed-ghost: transparent,
+    bg-color-hover-typed-ghost: rgba($color-white, 0.1),
+    bg-color-focus-typed-ghost: rgba($color-white, 0.1),
+    bg-color-active-typed-ghost: rgba($color-white, 0.2),
+    bg-color-disabled-typed-ghost: getCssVar('button-bg-color-typed-ghost'),
+    b-color-disabled-typed-ghost: getCssVar('content-color-disabled'),
+    border: getCssVar('border-shape') getCssVar('button-b-color'),
+    radius: getCssVar('radius-base'),
+    pulse-s-color: getCssVar('color-primary-base'),
+    pulse-opacity: 60%,
+    pulse-size: 6px,
+    pulse-duration: 800ms,
+    pulse-timing: ease,
+    height: 32px,
+    v-padding: 0,
+    h-padding: 14px,
+    font-size: getCssVar('font-size-base'),
+    series-span: 8px,
+    icon-span: 6px,
+    d-color-typed: rgba($color-white, 50%),
+  ),
+  $button
+);
+
+.#{$namespace}-button {
+  &-vars {
+    @include definePresetValues('button', $button);
+  }
+
+  $self: &;
+
+  @mixin disabled($selector) {
+    @at-root {
+      #{$self}--disabled#{$selector} {
+        &,
+        &:hover,
+        &:focus,
+        &.active {
+          @content;
+        }
+      }
+    }
+  }
+
+  @mixin defineButtonStyle($style-map) {
+    @include definePresetStyle('button', $style-map);
+  }
+
+  @include basis;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: getCssVar('button-height');
+  padding: getCssVar('button-v-padding') getCssVar('button-h-padding');
+  font-weight: 400;
+  line-height: 1;
+  color: getCssVar('button-color');
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  background-color: getCssVar('button-bg-color');
+  border: getCssVar('button-border');
+  border-radius: getCssVar('button-radius');
+  outline: 0;
+  transform: getCssVar('transition-color'), getCssVar('transition-background'),
+    getCssVar('transition-border'), getCssVar('transition-shadow');
+
+  &:hover {
+    color: getCssVar('button-color-hover');
+    background-color: getCssVar('button-bg-color-hover');
+    border-color: getCssVar('button-b-color-hover');
+  }
+
+  &:focus {
+    color: getCssVar('button-color-focus');
+    background-color: getCssVar('button-bg-color-focus');
+    border-color: getCssVar('button-b-color-focus');
+  }
+
+  &:active {
+    color: getCssVar('button-color-active');
+    background-color: getCssVar('button-bg-color-active');
+    border-color: getCssVar('button-b-color-active');
+  }
+
+  @include disabled('') {
+    color: getCssVar('button-color-disabled');
+    cursor: not-allowed;
+    background-color: getCssVar('button-bg-color-disabled');
+    border-color: getCssVar('button-b-color-disabled');
+  }
+
+  & + & {
+    margin-left: getCssVar('button-series-span');
+  }
+
+  &--small {
+    @include definePresetValues(
+      'button',
+      (
+        height: 24px,
+        'h-padding': 10px,
+      )
+    );
+  }
+
+  &--large {
+    @include definePresetValues(
+      'button',
+      (
+        height: 40px,
+        h-padding: 20px,
+      )
+    );
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    pointer-events: none;
+    content: '';
+    background-color: transparent;
+    border-radius: inherit;
+    animation-duration: getCssVar('button-pulse-duration');
+    animation-timing-function: getCssVar('button-pulse-timing');
+    animation-iteration-count: 1;
+  }
+
+  &--pulsing::after {
+    animation-name: #{$namespace}-button-pulse, #{$namespace}-button-pulse-opacity;
+
+    @keyframes #{$namespace}-button-pulse {
+      0% {
+        box-shadow: 0 0 1px 0 getCssVar('button-pulse-s-color');
+      }
+
+      100% {
+        box-shadow: 0 0 1px getCssVar('button-pulse-size') getCssVar('button-pulse-s-color');
+      }
+    }
+
+    @keyframes #{$namespace}-button-pulse-opacity {
+      0% {
+        opacity: getCssVar('button-pulse-opacity');
+      }
+
+      100% {
+        opacity: 0%;
+      }
+    }
+  }
+
+  // 虚线
+  &--dashed {
+    border-style: dashed;
+
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: transparent;
+    }
+  }
+
+  // 文本
+  &--text {
+    border-color: transparent;
+    &::after {
+      display: none;
+    }
+
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  // 循环渲染不同的颜色
+  @each $type in $types {
+    @at-root {
+      &--#{$type} {
+        @include defineButtonStyle(
+          (
+            color: 'button-color-typed',
+            color-hover: 'button-color-hover-typed',
+            color-focus: 'button-color-focus-typed',
+            color-active: 'button-color-active-typed',
+            color-disabled: 'button-color-disabled-typed',
+            bg-color: 'color' $type 'base',
+            bg-color-hover: 'color' $type 'light-2',
+            bg-color-focus: 'color' $type 'light-2',
+            bg-color-active: 'color' $type 'dark-1',
+            bg-color-disabled: 'button-bg-color-disabled-typed',
+            b-color: 'color' $type 'base',
+            b-color-hover: 'color' $type 'light-2',
+            b-color-focus: 'color' $type 'light-2',
+            b-color-active: 'color' $type 'dark-1',
+            b-color-disabled: 'button-b-color-disabled-typed',
+            pulse-s-color: 'color' $type 'dark-1',
+          )
+        );
+      }
+      &--#{$type}#{&}--simple {
+        @include defineButtonStyle(
+          (
+            color: 'color' $type 'base',
+            color-hover: 'color' $type 'base',
+            color-focus: 'button-color-focus-typed-simple',
+            color-active: 'button-color-active-typed-simple',
+            color-disabled: 'button-color-disabled-typed-simple',
+            bg-color: 'color' $type 'opacity-8',
+            bg-color-hover: 'color' $type 'opacity-7',
+            bg-color-focus: 'color' $type 'opacity-1',
+            bg-color-active: 'color' $type 'opacity-1',
+            bg-color-disabled: 'button-bg-color-disabled-typed-simple',
+            b-color: 'color' $type 'opacity-4',
+            b-color-hover: 'color' $type 'opacity-4',
+            b-color-focus: 'color' $type 'opacity-3',
+            b-color-active: 'color' $type 'opacity-3',
+            b-color-disabled: 'button-b-color-disabled-typed-simple',
+          )
+        );
+      }
+
+      &--#{$type}#{&}--ghost {
+        @include defineButtonStyle(
+          (
+            color: 'color' $type 'base',
+            color-hover: 'color' $type 'base',
+            color-focus: 'color' $type 'base',
+            color-active: 'color' $type 'base',
+            color-disabled: 'button-color-disabled-typed-ghost',
+            bg-color: 'button-bg-color-typed-ghost',
+            bg-color-hover: 'button-bg-color-hover-typed-ghost',
+            bg-color-focus: 'button-bg-color-focus-typed-ghost',
+            bg-color-active: 'button-bg-color-active-typed-ghost',
+            bg-color-disabled: 'button-bg-color-disabled-typed-ghost',
+            b-color-disabled: 'button-b-color-disabled-typed-ghost',
+          )
+        );
+      }
+
+      &--#{$type}#{&}--text,
+      &--#{$type}#{&}--dashed {
+        @include defineButtonStyle(
+          (
+            color: 'color' $type 'base',
+            color-hover: 'color' $type 'light-2',
+            color-focus: 'color' $type 'light-2',
+            color-active: 'color' $type 'dark-1',
+          )
+        );
+      }
+    }
+  }
+
+  &--text#{&}--disabled {
+    &,
+    &:hover,
+    &:focus,
+    &.active {
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  &--circle {
+    border-radius: getCssVar('button-height');
+  }
+}

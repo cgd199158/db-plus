@@ -1,1 +1,6 @@
+@forward './common/var.scss';
+
+@use 'common/index.scss';
 @use 'icon.scss';
+
+@use 'button.scss';

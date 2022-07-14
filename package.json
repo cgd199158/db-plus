@@ -1,20 +1,21 @@
 {
   "scripts": {
-    "serve": "pnpm -C play serve",
+    "serve:play": "pnpm -C play serve",
+    "serve": "pnpm -C docs serve",
     "build": "gulp -f build/gulpfile.ts",
-    "build:com": "vite build"
+    "build:com": "pnpm -C components build"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@db-plus/hooks": "workspace:^1.0.0",
     "@types/gulp": "^4.0.9",
     "@types/gulp-autoprefixer": "^0.0.33",
     "@types/gulp-clean-css": "^4.3.0",
     "@types/gulp-sass": "^5.0.0",
     "@types/sass": "^1.43.1",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
-    "fast-glob": "^3.2.11",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
@@ -24,11 +25,12 @@
     "sass": "^1.53.0",
     "sucrase": "^3.23.0",
     "typescript": "^4.7.4",
-    "vite-plugin-dts": "^1.2.1",
+    "unplugin-vue-components": "^0.21.1",
     "vue": "^3.2.37"
   },
   "dependencies": {
     "@db-plus/components": "workspace:^1.0.0",
+    "@db-plus/config": "workspace:^1.0.0",
     "@db-plus/theme-chalk": "workspace:^1.0.0",
     "@db-plus/utils": "workspace:^1.0.0"
   }
