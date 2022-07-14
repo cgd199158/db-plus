@@ -9,6 +9,10 @@ export const buttonProps = {
   disabled: Boolean,
   icon: String,
   color: String,
+  text: Boolean,
+  simple: Boolean,
+  loading: Boolean,
+  circle: Boolean,
 };
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>;

@@ -1,9 +1,9 @@
 @use './var.scss' as *;
 
 @mixin basis {
-  font-size: get-css-var('font-size-base');
-  line-height: get-css-var('line-height-base');
-  color: get-css-var('content-color-base');
+  font-size: getCssVar('font-size-base');
+  line-height: getCssVar('line-height-base');
+  color: getCssVar('content-color-base');
   vertical-align: middle;
 
   &,
@@ -35,5 +35,53 @@
   &::after {
     display: table;
     content: '';
+  }
+}
+
+// BEM
+@mixin b($block) {
+  $B: $namespace + '-' + $block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: '';
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
+  }
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: '';
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + $selector + $modifier-separator + $unit + ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
   }
 }

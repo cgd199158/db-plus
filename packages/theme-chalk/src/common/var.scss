@@ -9,7 +9,7 @@
 
 $namespace: 'db' !default;
 
-@function to-css-var-name($name-units...) {
+@function toCssVarName($name-units...) {
   $name: '--' + $namespace;
 
   @each $unit in $name-units {
@@ -21,33 +21,34 @@ $namespace: 'db' !default;
   @return $name;
 }
 
-@function get-css-var($name-units...) {
-  @return var(#{to-css-var-name($name-units...)});
+@function getCssVar($name-units...) {
+  @return var(#{toCssVarName($name-units...)});
 }
 
-@mixin define-css-var($name-units, $value) {
-  #{to-css-var-name($name-units...)}: #{$value};
+@mixin defineCssVar($name-units, $value) {
+  #{toCssVarName($name-units...)}: #{$value};
 }
 
-@mixin define-preset-values($base-name, $style-map, $inspect: false) {
+@mixin definePresetValues($base-name, $style-map, $inspect: false) {
   @each $name in map.keys($style-map) {
-    @include define-css-var(
+    @include defineCssVar(
       ($base-name, $name),
       if($inspect, #{meta.inspect(map.get($style-map, $name))}, map.get($style-map, $name))
     );
   }
 }
 
-@mixin define-preset-style($base-name, $style-map) {
+@mixin definePresetStyle($base-name, $style-map) {
   @each $name in map.keys($style-map) {
     $style-units: map.get($style-map, $name);
 
     @if list.length($style-units) != 0 {
-      @include define-css-var(($base-name, $name), get-css-var($style-units...));
+      @include defineCssVar(($base-name, $name), getCssVar($style-units...));
     }
   }
 }
 
+// 颜色类型
 $types: primary, info, success, warning, error;
 
 $color-black: #000 !default;
@@ -75,7 +76,7 @@ $color-map: map.deep-merge(
   $color-map
 );
 
-@mixin define-level-colors($type, $max-lavel, $mode, $mixed-color) {
+@mixin defineLevelColors($type, $max-lavel, $mode, $mixed-color) {
   @for $i from 1 through $max-lavel {
     $color-map: map.deep-merge(
       (
@@ -108,16 +109,16 @@ $color-map: map.deep-merge(
 }
 
 @each $type in $types {
-  @include define-level-colors($type, 9, 'light', $color-white);
-  @include define-level-colors($type, 2, 'dark', $color-black);
+  @include defineLevelColors($type, 9, 'light', $color-white);
+  @include defineLevelColors($type, 2, 'dark', $color-black);
   @include define-opacity-colors($type, 9);
 }
 
-@mixin define-type-color($type) {
+@mixin defineTypeColor($type) {
   $colors: map.get($color-map, $type);
 
   @each $name in map.keys($colors) {
-    @include define-css-var(('color', $type, $name), map.get($colors, $name));
+    @include defineCssVar(('color', $type, $name), map.get($colors, $name));
   }
 }
 
@@ -159,7 +160,7 @@ $border-color-map: map.merge(
 
 $border-width: 1px !default;
 $border-style: solid !default;
-$border-shape: get-css-var('border-width') get-css-var('border-style') !default;
+$border-shape: getCssVar('border-width') getCssVar('border-style') !default;
 
 $fill-color-map: () !default;
 $fill-color-map: map.merge(
@@ -219,25 +220,25 @@ $shadow-color-map: map.merge(
 $shadow-x: 0 !default;
 $shadow-y: 0 !default;
 $shadow-blur: 6px !default;
-$shadow-shape: get-css-var('shadow-x') get-css-var('shadow-y') get-css-var('shadow-blur') !default;
-$shadow-base: get-css-var('shadow-shape') get-css-var('border-color-base') !default;
+$shadow-shape: getCssVar('shadow-x') getCssVar('shadow-y') getCssVar('shadow-blur') !default;
+$shadow-base: getCssVar('shadow-shape') getCssVar('border-color-base') !default;
 
 $shadow-border: 0 0 0 1px !default;
 $shadow-focus: 0 0 2px 2px !default;
 
 $transition-duration: 250ms !default;
 $transition-timing: ease !default;
-$transition-base: get-css-var('transition-duration') get-css-var('transition-timing') !default;
+$transition-base: getCssVar('transition-duration') getCssVar('transition-timing') !default;
 
 $transition-map: () !default;
 $transition-map: map.merge(
   (
-    color: color get-css-var('transition-base'),
-    background: background-color get-css-var('transition-base'),
-    border: border-color get-css-var('transition-base'),
-    shadow: box-shadow get-css-var('transition-base'),
-    opacity: opacity get-css-var('transition-base'),
-    transform: transform get-css-var('transition-base'),
+    color: color getCssVar('transition-base'),
+    background: background-color getCssVar('transition-base'),
+    border: border-color getCssVar('transition-base'),
+    shadow: box-shadow getCssVar('transition-base'),
+    opacity: opacity getCssVar('transition-base'),
+    transform: transform getCssVar('transition-base'),
   ),
   $transition-map
 );
