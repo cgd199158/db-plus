@@ -1,0 +1,18 @@
+@use 'sass:math';
+@use './common/mixins.scss' as *;
+@use './common/var.scss' as *;
+
+.#{$namespace}-col {
+  @include basis;
+
+  position: relative;
+
+  @for $i from 0 through 24 {
+    $size: (math.div(1, 24) * $i * 100) * 1%;
+
+    &--#{$i} {
+      flex: 0 0 $size;
+      max-width: $size;
+    }
+  }
+}

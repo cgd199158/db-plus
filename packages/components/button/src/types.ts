@@ -13,6 +13,6 @@ export const buttonProps = {
   simple: Boolean,
   loading: Boolean,
   circle: Boolean,
-};
+} as const;
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>;

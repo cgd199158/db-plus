@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use './common/mixins.scss' as *;
+@use './common/var.scss' as *;
+
+.#{$namespace}-row {
+  @include basis;
+
+  position: relative;
+  display: flex;
+  flex-flow: row wrap; // flex-direction: row; flex-wrap: wrap;
+}
