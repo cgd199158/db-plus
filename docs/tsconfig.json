@@ -13,10 +13,11 @@
     // "noEmit": false, // 不生成文件
     // "noLib": false, //
     // "isolatedModules": true, // 单文件编译, true: 不生产文件, false: 生成文件
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "dom", "scripthost"],
     "paths": {
-      "@components/*": ["../packages/components/*"]
+      "@/*": ["src/*"]
     },
+    "types": ["vite/client"],
     "baseUrl": ".",
     "noUnusedLocals": true, // 禁止未使用的变量被声明
     "allowSyntheticDefaultImports": true,

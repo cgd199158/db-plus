@@ -1,3 +1,4 @@
+import { getComponentsRouter } from '@/utils/component';
 import type { RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../pages/home/index.vue';
@@ -17,13 +18,7 @@ const routes: RouteRecordRaw[] = [
         name: 'components',
         component: () => import('../components/layout/component/index.vue'),
         redirect: '/Components/button',
-        children: [
-          {
-            path: 'button',
-            name: 'button',
-            component: () => import('../pages/components/button/index.vue'),
-          },
-        ],
+        children: [...getComponentsRouter()],
       },
     ],
   },

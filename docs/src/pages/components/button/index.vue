@@ -41,6 +41,7 @@
 <script lang="ts">
 export default {
   name: 'Button',
+  title: '按钮',
 };
 </script>
 

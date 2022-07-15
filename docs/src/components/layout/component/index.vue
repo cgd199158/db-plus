@@ -2,8 +2,8 @@
   <div class="components">
     <div class="components__menu">
       <ul>
-        <li>
-          <router-link to="/components/button">按钮</router-link>
+        <li v-for="item in menuList" :key="item.path">
+          <router-link :to="item.path">{{ item.title }}</router-link>
         </li>
       </ul>
     </div>
@@ -16,7 +16,16 @@
 export default {};
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { getComponentsMenu, menuItem } from '../../../utils/component';
+import { onMounted, ref, Ref } from 'vue';
+const menuList: Ref<menuItem[]> = ref([]);
+onMounted(() => {
+  const data = getComponentsMenu();
+  console.log('data', data);
+  menuList.value = data;
+});
+</script>
 
 <style lang="scss" scoped>
 .components {
