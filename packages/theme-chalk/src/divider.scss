@@ -1,0 +1,100 @@
+@use 'sass:map';
+
+@use './common/mixins.scss' as *;
+@use './common/var.scss' as *;
+
+// 初始化默认组件默认颜色
+$divider: () !default;
+$divider: map.merge(
+  (
+    b-color: getCssVar('border-color-light-2'),
+    border: getCssVar('border-shape') getCssVar('divider-b-color'),
+    v-margin: 24px,
+    v-margin-text: 14px,
+    h-margin: 8px,
+    text-v-padding: 0,
+    text-h-padding: 14px,
+    text-size-primary: getCssVar('font-size-primary'),
+  ),
+  $divider
+);
+
+.#{$namespace}-divider {
+  &-vars {
+    @include definePresetValues('divider', $divider);
+  }
+
+  @include basis;
+
+  display: flex;
+  padding: 0;
+  border-top: getCssVar('divider-border');
+
+  &--horizontal {
+    width: 100%;
+    margin: getCssVar('divider') 0;
+    clear: both;
+  }
+
+  &--vertival {
+    position: relative;
+    display: inline-block;
+    height: 14px;
+    margin: 0 getCssVar('divider-h-margin');
+    vertical-align: middle;
+    border-top: 0;
+    border-left: getCssVar('divider-border');
+  }
+
+  &--with-text {
+    margin: getCssVar('divider-v-margin-text') 0;
+    text-align: center;
+    white-space: nowrap;
+    border-top: 0;
+    &::before,
+    &::after {
+      position: relative;
+      top: 50%;
+      width: 50%;
+      content: '';
+      border-top: getCssVar('divider-border');
+      transform: translateY(50%);
+    }
+  }
+
+  &--with-text-left {
+    &::before {
+      width: 10%;
+    }
+
+    &::after {
+      width: 90%;
+    }
+  }
+
+  &--with-text-right {
+    &::before {
+      width: 90%;
+    }
+
+    &::after {
+      width: 10%;
+    }
+  }
+
+  &--dashed {
+    &,
+    &::before,
+    &::after {
+      border-top-style: dashed;
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    padding: getCssVar('divider-text-v-padding') getCssVar('divider-text-h-padding');
+    color: getCssVar('divider-text-color');
+    text-align: center;
+    white-space: nowrap;
+  }
+}
