@@ -1,6 +1,6 @@
 import Button from './src/button.vue';
-import { widthInstall } from '@db-plus/utils/width-install';
-const DbButton = widthInstall(Button);
+import { withInstall } from '@db-plus/utils/width-install';
+const DbButton = withInstall(Button);
 
 export { DbButton };
 

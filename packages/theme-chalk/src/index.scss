@@ -1,9 +1,12 @@
 @forward './common/var.scss';
 
 @use 'common/index.scss';
-@use 'icon.scss';
 
+@use 'icon.scss';
 @use 'button.scss';
 @use 'row.scss';
 @use 'col.scss';
 @use 'divider.scss';
+@use 'collapse.scss';
+@use 'collapse-item.scss';
+@use 'collapse-transition.scss';

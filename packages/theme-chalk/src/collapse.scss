@@ -1,0 +1,208 @@
+@use 'sass:map';
+@use 'common/var.scss' as *;
+@use 'common/mixins.scss' as *;
+
+$collapse: () !default;
+
+$collapse: map.merge(
+  (
+    header-color-disabled: getCssVar('content-color-disabled'),
+    header-bg-color: transparent,
+    header-bg-color-card: getCssVar('fill-color-background'),
+    header-v-padding: 8px,
+    header-h-padding: 14px,
+    arrow-color: getCssVar('content-color-secondary'),
+    arrow-color-disabled: getCssVar('content-color-humble'),
+    content-color-disabled: getCssVar('content-color-disabled'),
+    content-v-padding: 10px,
+    content-h-padding: 16px,
+    d-color: getCssVar('border-color-light-2'),
+    divider: getCssVar('border-shape') getCssVar('collapse-d-color'),
+    b-color: getCssVar('border-color-base'),
+    border: getCssVar('border-shape') getCssVar('collapse-b-color'),
+    radius: getCssVar('radius-base'),
+  ),
+  $collapse
+);
+
+.#{$namespace}-collapse {
+  &-vars {
+    @include definePresetValues('collapse', $collapse);
+  }
+
+  @include basis;
+
+  $header: #{&}__header;
+  $arrow: #{&}__arrow;
+  $content: #{&}__content;
+  $divider: getCssVar('collapse-divider');
+  $radius: getCssVar('collapse-radius');
+  $content-padding: getCssVar('collapse-content-v-padding') getCssVar('collapse-content-h-padding');
+
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+
+  @at-root {
+    &__item {
+      @include basis;
+
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border-top: $divider;
+      border-bottom: $divider;
+      & + & {
+        border: 0;
+      }
+    }
+
+    &--card {
+      #{$header} {
+        border-radius: $radius;
+        transition: border getCssVar('transition-color');
+      }
+      #{$content} {
+        padding: $content-padding;
+        border-radius: 0 0 $radius $radius;
+      }
+    }
+
+    &--card &__item {
+      border-color: getCssVar('collapse-d-color');
+
+      &:first-child #{$header} {
+        border-radius: $radius $radius 0 0;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+
+        #{$header} {
+          border-radius: 0 0 $radius $radius;
+        }
+      }
+    }
+
+    &--card &__item--expanded {
+      #{$header} {
+        border-bottom-color: getCssVar('collapse-d-color');
+      }
+
+      #{$content} {
+        border-radius: 0 0 $radius $radius;
+      }
+    }
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    padding: getCssVar('collapse-header-v-padding') getCssVar('collapse-header-h-padding');
+    cursor: pointer;
+    transition: getCssVar('transition-color');
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: getCssVar('collapse-arrow-color');
+    transition: getCssVar('transition-color'), getCssVar('transition-transform');
+    transform: translate(-50%, -50%);
+  }
+
+  &--arrow-right,
+  &__item--arrow-right {
+    #{$header} {
+      padding-right: 36px;
+    }
+
+    #{$arrow} {
+      left: calc(100% - 16px);
+    }
+  }
+
+  &--arrow-left,
+  &__item--arrow-left {
+    #{$header} {
+      padding-left: 36px;
+    }
+    #{$arrow} {
+      left: 16px;
+    }
+  }
+
+  &--arrow-none,
+  &__item--arrow-none {
+    #{$arrow} {
+      display: none;
+    }
+  }
+
+  &__item--expanded &__arrow {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  &__item--disabled &__arrow {
+    color: getCssVar('collapse-arrow-color-disabled');
+  }
+
+  &__body {
+    padding: 0 getCssVar('collapse-header-h-padding');
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: $content-padding;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4px;
+  }
+
+  &__item--disabled &__content {
+    color: get-css-var('collapse-content-color-disabled');
+  }
+
+  // 卡片样式
+  &--card,
+  &__item--card {
+    border: getCssVar('collapse-border');
+    border-radius: $radius;
+    #{$header} {
+      background-color: getCssVar('collapse-header-bg-color-card');
+      border-bottom: getCssVar('border-shape') transparent;
+    }
+  }
+}
+
+// 动画
+.collapse-transition {
+  transition: getCssVar('transition-duration') height ease-in-out,
+    getCssVar('transition-duration') padding-top ease-in-out,
+    getCssVar('transition-duration') padding-bottom ease-in-out;
+}
+
+.horizontal-collapse-transition {
+  transition: getCssVar('transition-duration') width ease-in-out,
+    getCssVar('transition-duration') padding-left ease-in-out,
+    getCssVar('transition-duration') padding-right ease-in-out;
+}
+
+.#{$namespace}-collapse-transition-leave-active,
+.#{$namespace}-collapse-transition-enter-active {
+  transition: getCssVar('transition-duration') max-height ease-in-out,
+    getCssVar('transition-duration') padding-top ease-in-out,
+    getCssVar('transition-duration') padding-bottom ease-in-out;
+}

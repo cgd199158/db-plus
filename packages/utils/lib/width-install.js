@@ -1,10 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.widthInstall = void 0;
-const widthInstall = (comp) => {
-    comp.install = function (app) {
-        app.component(comp.name, comp);
-    };
-    return comp;
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+exports.withInstall = void 0;
+const withInstall = (comp) => {
+  comp.install = function (app) {
+    app.component(comp.name, comp);
+  };
+  return comp;
 };
-exports.widthInstall = widthInstall;
+exports.withInstall = withInstall;

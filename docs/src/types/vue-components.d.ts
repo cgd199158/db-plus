@@ -9,6 +9,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Component: typeof import('./../components/layout/component/index.vue')['default']
     DbButton: typeof import('../../../packages/components/button/index')['default']
+    DbCollapse: typeof import('../../../packages/components/collapse/index')['default']
+    DbCollapseItem: typeof import('../../../packages/components/collapse-item/index')['default']
     DbDivider: typeof import('../../../packages/components/divider/index')['default']
     DbIcon: typeof import('../../../packages/components/icon/index')['default']
     Layout: typeof import('./../components/layout/index.vue')['default']

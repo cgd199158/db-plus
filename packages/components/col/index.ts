@@ -1,6 +1,6 @@
 import Col from './src/col.vue';
-import { widthInstall } from '@db-plus/utils/width-install';
-const DbCol = widthInstall(Col);
+import { withInstall } from '@db-plus/utils/width-install';
+const DbCol = withInstall(Col);
 
 export { DbCol };
 

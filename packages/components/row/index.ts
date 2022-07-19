@@ -1,6 +1,6 @@
 import Row from './src/row.vue';
-import { widthInstall } from '@db-plus/utils/width-install';
-const DbRow = widthInstall(Row);
+import { withInstall } from '@db-plus/utils/width-install';
+const DbRow = withInstall(Row);
 
 export { DbRow };
 
