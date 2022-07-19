@@ -1,4 +1,7 @@
 {
+  "author": {
+    "name": "cgd"
+  },
   "scripts": {
     "serve:play": "pnpm -C play serve",
     "serve": "pnpm -C docs serve",
@@ -6,7 +9,6 @@
     "build:com": "pnpm -C components build"
   },
   "keywords": [],
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@db-plus/hooks": "workspace:^1.0.0",
@@ -33,5 +35,8 @@
     "@db-plus/config": "workspace:^1.0.0",
     "@db-plus/theme-chalk": "workspace:^1.0.0",
     "@db-plus/utils": "workspace:^1.0.0"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

@@ -4,7 +4,7 @@ import path from 'path';
 import { buildConfig } from './utils/config';
 import { projectRoot, buildOutput } from './utils/paths';
 import ts from 'gulp-typescript';
-import { widthTaskName } from './utils/index';
+import { withTaskName } from './utils/index';
 
 export const buildPackages = (dirname: string, name: string) => {
   console.log('dirname', dirname);
@@ -16,7 +16,7 @@ export const buildPackages = (dirname: string, name: string) => {
     const output = path.resolve(dirname, config.output.name);
 
     return series(
-      widthTaskName(`build:${dirname} `, () => {
+      withTaskName(`build:${dirname} `, () => {
         const tsConfig = path.resolve(projectRoot, 'tsconfig.json'); // ts的配置文件
         const inputs = ['**/*.ts', '!gulpfile.ts', '!node_modules'];
         return src(inputs)
@@ -29,7 +29,7 @@ export const buildPackages = (dirname: string, name: string) => {
           )
           .pipe(dest(output));
       }),
-      widthTaskName(`copy: ${dirname}`, () => {
+      withTaskName(`copy: ${dirname}`, () => {
         // 放到es => utils 和 lib => utils
         return src(`${output}/**`).pipe(dest(path.resolve(buildOutput, config.output.name, name)));
       }),

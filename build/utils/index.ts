@@ -1,7 +1,7 @@
 import { spawn } from 'child_process'; // 产卵,子进程
 import { projectRoot } from './paths';
 
-export const widthTaskName = <T>(name: string, fn: T) => Object.assign(fn, { displayName: name });
+export const withTaskName = <T>(name: string, fn: T) => Object.assign(fn, { displayName: name });
 
 // 在node使用子进程来运行脚本
 export const run = async (command: string) => {
