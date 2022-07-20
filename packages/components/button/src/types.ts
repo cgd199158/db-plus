@@ -1,4 +1,4 @@
-import { sizeProp } from '@db-plus/config/src/props';
+import { sizeProp } from '@db-plus/config';
 import type { ExtractPropTypes, PropType } from 'vue';
 
 export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';

@@ -2,6 +2,7 @@ import execa from 'execa';
 import chalk from 'chalk';
 import { resolve } from 'path';
 import { readdirSync, statSync, existsSync } from 'fs';
+import { prompt } from 'enquirer';
 import type { Options } from 'execa';
 
 type LogFn = () => void;
@@ -80,4 +81,65 @@ export function toCamelCase(value: string) {
   const capitalName = toCapitalCase(value);
 
   return capitalName.charAt(0).toLowerCase() + capitalName.slice(1);
+}
+
+const packages = [
+  'db-plus',
+  // 'plaground',
+  'packages/config',
+  'packages/hooks',
+  'packages/utils',
+];
+
+// 获取打包信息
+export async function getPackageInfo(inputPkg: string) {
+  let pkgName: string | null = null;
+
+  if (packages.includes(inputPkg)) {
+    pkgName = inputPkg;
+  } else {
+    let options = inputPkg ? packages.filter((p) => p.includes(inputPkg)) : packages;
+
+    if (!options.length) {
+      options = packages;
+    } else if (options.length === 1) {
+      pkgName = options[0];
+    } else {
+      pkgName = (
+        await prompt<{ pkgName: string }>({
+          type: 'select',
+          name: 'pkgName',
+          message: 'Select release package:',
+          choices: options,
+        })
+      ).pkgName;
+    }
+  }
+
+  if (!pkgName) {
+    throw new Error('Release package must not be null');
+  }
+
+  const isRoot = pkgName === 'db-plus';
+  const pkgDir = resolve(__dirname, isRoot ? '..' : `../${pkgName}`);
+  const pkgPath = resolve(pkgDir, 'package.json');
+
+  if (!existsSync(pkgPath)) {
+    throw new Error(`Release package ${pkgName} not found`);
+  }
+
+  const pkg = require(pkgPath);
+
+  if (pkg.private) {
+    throw new Error(`Release package ${pkgName} is private`);
+  }
+
+  return {
+    pkgName,
+    pkgDir,
+    pkgPath,
+    pkg,
+    isRoot,
+    currentVersion: pkg.version,
+  };
 }

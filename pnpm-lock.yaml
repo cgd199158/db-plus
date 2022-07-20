@@ -20,6 +20,7 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.30.7
       '@vitejs/plugin-vue-jsx': ^1.3.10
       chalk: ^4.1.2
+      enquirer: ^2.3.6
       eslint: ^8.20.0
       eslint-config-alloy: ^4.6.2
       eslint-plugin-vue: ^9.2.0
@@ -55,6 +56,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.30.7_eslint@8.20.0+typescript@4.7.4
       '@vitejs/plugin-vue-jsx': 1.3.10
       chalk: 4.1.2
+      enquirer: 2.3.6
       eslint: 8.20.0
       eslint-config-alloy: 4.6.2_aee22f6e19176385a7ba02aaf895df9f
       eslint-plugin-vue: 9.2.0_eslint@8.20.0
@@ -1684,6 +1686,13 @@ packages:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
     dependencies:
       once: 1.4.0
+    dev: true
+
+  /enquirer/2.3.6:
+    resolution: {integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==}
+    engines: {node: '>=8.6'}
+    dependencies:
+      ansi-colors: 4.1.3
     dev: true
 
   /error-ex/1.3.2:
@@ -4490,7 +4499,7 @@ packages:
     peerDependencies:
       esbuild: '>=0.13'
       rollup: ^2.50.0
-      vite: ^2.3.0 || ^3.0.0-0
+      vite: ^2.3.0 || ^3.0.0-0 || ^3.0.0
       webpack: 4 || 5
     peerDependenciesMeta:
       esbuild:
@@ -4638,7 +4647,7 @@ packages:
     resolution: {integrity: sha512-RyDCjQzVxUeDqF+Rl1hQT+t/rKmvfvo04gaGV/l3597FpeIWGKtNF1S4x509Kx1AfHOjLa1JdmjVgnSEIv+lpw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
-      vite: '>=2.4.4'
+      vite: '>=2.4.4 || ^3.0.0'
     dependencies:
       '@microsoft/api-extractor': 7.28.4
       '@rushstack/node-core-library': 3.49.0

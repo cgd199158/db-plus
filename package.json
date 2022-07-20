@@ -1,5 +1,11 @@
 {
   "name": "db-plus",
+  "version": "1.0.0-beta.01",
+  "main": "lib/components/index.js",
+  "module": "es/components/index.mjs",
+  "peerDependencies": {
+    "vue": "^3.2.25"
+  },
   "author": {
     "name": "cgd"
   },
@@ -9,7 +15,8 @@
     "build": "ts-node scripts/build",
     "bootstrap": "ts-node scripts/bootstrap.ts",
     "build:style": "gulp --require sucrase/register/ts",
-    "build:com": "pnpm -C components build"
+    "build:com": "pnpm -C components build",
+    "publish:ci": "ts-node scripts/publish.ts"
   },
   "keywords": [],
   "license": "MIT",
@@ -26,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "chalk": "^4.1.2",
+    "enquirer": "^2.3.6",
     "eslint": "^8.20.0",
     "eslint-config-alloy": "^4.6.2",
     "eslint-plugin-vue": "^9.2.0",
@@ -52,5 +60,48 @@
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "exports": {
+    ".": {
+      "import": "./es/components/index.mjs",
+      "require": "./lib/components/index.js"
+    },
+    "./es": "./es/components/index.mjs",
+    "./lib": "./lib/components/index.js",
+    "./es/*.mjs": "./es/components/*/index.mjs",
+    "./es/*": "./es/components/*/index.mjs",
+    "./lib/*.js": "./lib/components/*/index.js",
+    "./lib/*": "./lib/components/*/index.js",
+    "./package.json": "./package.json",
+    "./*": "./*"
+  },
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "package",
+    "types.d.ts"
+  ],
+  "keyword": [
+    "vue",
+    "vue3",
+    "db-plus",
+    "vite"
+  ],
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "vite": "^3.0.0"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgd199158/db-plus.git"
+  },
+  "sideEffects": [
+    "css/*.css",
+    "es/components/*/style.js",
+    "lib/components/*/style.js"
+  ]
 }

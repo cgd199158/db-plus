@@ -47,9 +47,11 @@ export default defineConfig(async () => {
     },
     resolve: {
       alias: [
-        { find: '@db-plus/config', replacement: resolve(__dirname, 'packages/config') },
-        { find: '@db-plus/hooks', replacement: resolve(__dirname, 'packages/hooks') },
-        { find: '@db-plus/utils', replacement: resolve(__dirname, 'packages/utils') },
+        { find: /^@db-plus\/config(.+)/, replacement: resolve(__dirname, `packages/config$1`) },
+        { find: /^@db-plus\/hooks(.+)/, replacement: resolve(__dirname, `packages/hooks$1`) },
+        { find: /^@db-plus\/utils(.+)/, replacement: resolve(__dirname, `packages/utils$1`) },
+        // { find: '@db-plus/config', replacement: resolve(__dirname, 'packages/config') },
+        // { find: '@db-plus/utils', replacement: resolve(__dirname, 'packages/utils') },
       ],
     },
     build: {
