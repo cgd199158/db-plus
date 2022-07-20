@@ -40,4 +40,12 @@ async function main() {
       SOURCE_MAP: sourceMap ? 'true' : '',
     },
   });
+
+  await run('pnpm', ['build:style']);
+
+  logger.ln();
+
+  if (!process.exitCode) {
+    logger.withEndLn(() => logger.success('DbPlus全部打包完成...'));
+  }
 }

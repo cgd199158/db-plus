@@ -28,7 +28,7 @@ export async function run(bin: string, args: string[], opts: Options = {}) {
 export const logger = {
   ln: () => console.log(),
   withStartLn: (log: LogFn) => (logger.ln(), log()),
-  withEndln: (log: LogFn) => (log(), logger.ln()),
+  withEndLn: (log: LogFn) => (log(), logger.ln()),
   withBothLn: (log: LogFn) => (logger.ln(), log(), logger.ln()),
   warning: (msg: string) => {
     console.warn(`${chalk.bgYellow.black(' WARNING ')} ${chalk.yellow(msg)}`);
