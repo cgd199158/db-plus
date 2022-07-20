@@ -19,10 +19,10 @@
     "paths": {
       "@/*": ["./*"],
       "@db-plus/*": ["common/*/src"],
-      "db-plus": ["components"]
+      "db-plus": ["packages/components"]
     },
     "lib": ["esnext", "dom"]
   },
-  "include": ["packages/components"],
+  "include": ["packages/components", "types.d.ts"],
   "exclude": ["node_modules"]
 }

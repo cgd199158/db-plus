@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "composite": true, // 解释: 合并tsconfig.json和tsconfig.jsonc两个文件
+    "module": "commonjs", // 解释: 如果是commonjs, 则把所有的文件都打包成一个js文件 (包括node_modules) 如果是amd, 则把所有的文件都打包成一个js文件 (不包括node_modules) 如果是system, 则把所有的文件都打包成一个js文件 (不包括node_modules)
+    "moduleResolution": "node", // 解释: 如果指定了moduleResolution，那么就不需要指定module
+    "strict": true, // 注释: 如果为 true，则为严格模式，不允许使用不在全局变量声明中使用的变量
+    "noImplicitOverride": true, // 注释: 如果一个类型重写了父类型，则编译器会报错。
+    "noUnusedLocals": false, // 解释: 如果为 true，则编译器会报错，如果一个变量没有被使用，则编译器会报错。
+    "esModuleInterop": true, // 解释: 如果为 true，则编译器会把模块转换成 ES6 模块。
+    "skipLibCheck": true, // 解释: 如果为 true，则编译器不会检查库文件。
+    "forceConsistentCasingInFileNames": true, // 解释: 如果为 true，则编译器会把文件名转换成区分大小写的。
+    "useUnknownInCatchVariables": false, // 解释: 如果为 true，则编译器会把 catch 子句的变量设置为 unknown。
+    "types": ["node"] // 解释: 如果指定了types，那么就不需要指定target
+  },
+  "include": ["*.ts"] // 解释: 包含的文件
+}
