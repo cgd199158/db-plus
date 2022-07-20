@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "types": ["vite/client"],
     "paths": {
-      "@/*": ["./*"],
+      "@/style": ["packages/theme-chalk/src"],
       "@db-plus/*": ["common/*/src"],
       "db-plus": ["packages/components"]
     },

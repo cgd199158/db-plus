@@ -1,1 +1,1 @@
-import '@db-plus/theme-chalk/src/button.scss';
+import '@/style/button.scss';

@@ -1,1 +1,1 @@
-import '@db-plus/theme-chalk/src/collapse.scss';
+import '@/style/collapse.scss';

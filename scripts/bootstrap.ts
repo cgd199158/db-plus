@@ -22,14 +22,7 @@ async function main() {
 
     import { buildInstall } from './create'
 
-    // export type {
-    //   PropsOptions,
-    //   LocaleConfig,
-    //   LocaleNames,
-    //   LocaleOptions
-    // } from '@db-plus/config'
-
-    // export { version } from './version'
+    export { version } from './version'
 
     const components = [
       ${components
@@ -47,7 +40,10 @@ async function main() {
     export const install = buildInstall(components)
 
     export {
-      Db${exportComponents.map(toCapitalCase).join(',\n')}
+     ${exportComponents
+       .map(toCapitalCase)
+       .map((name) => `Db${name}`)
+       .join(',\n')}
     }
   `;
 

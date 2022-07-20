@@ -9,14 +9,7 @@ import { DbRow } from './row/index';
 
 import { buildInstall } from './create';
 
-// export type {
-//   PropsOptions,
-//   LocaleConfig,
-//   LocaleNames,
-//   LocaleOptions
-// } from '@db-plus/config'
-
-// export { version } from './version'
+export { version } from './version';
 
 const components = [
   DbButton,
@@ -33,4 +26,13 @@ const components = [
 export { buildInstall };
 export const install = buildInstall(components);
 
-export { DbButton, Col, Collapse, CollapseItem, CollapseTransition, Divider, Icon, Row };
+export {
+  DbButton,
+  DbCol,
+  DbCollapse,
+  DbCollapseItem,
+  DbCollapseTransition,
+  DbDivider,
+  DbIcon,
+  DbRow,
+};
