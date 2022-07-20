@@ -1,12 +1,15 @@
 {
   "name": "@db-plus/utils",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "gulp"
+  "version": "1.0.1",
+  "license": "MIT",
+  "author": "cgdong",
+  "main": "index.ts",
+  "module": "index.ts",
+  "private": false,
+  "peerDependencies": {
+    "vue": "^3.2.6"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "vue": "^3.2.37"
+  }
 }

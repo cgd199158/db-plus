@@ -16,7 +16,7 @@
     "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
-      "@vexip-ui/*": ["../common/*/src"]
+      "@db-plus/*": ["../common/*/src"]
     }
   },
   "include": ["src", "index.ts"],

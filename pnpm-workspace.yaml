@@ -1,4 +1,4 @@
 packages:
-  - 'packages/**' # 存放编写的组件
+  - 'packages/*' # 存放编写的组件
   - play # 测试目录
   - docs # 文档目录

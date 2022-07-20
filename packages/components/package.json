@@ -1,12 +1,15 @@
 {
   "name": "@db-plus/components",
   "version": "1.0.0",
-  "description": "all components are settled here",
+  "author": "cgd",
+  "type": "module",
   "main": "index.ts",
-  "module": "index.ts",
-  "peerDependencies": {
-    "vue": "^3.2.0"
+  "engines": {
+    "node": ">=14"
   },
-  "sideEffects": false,
-  "scripts": {}
+  "dependencies": {
+    "@db-plus/utils": "workspace:*"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
 }

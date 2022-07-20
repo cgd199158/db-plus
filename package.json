@@ -1,8 +1,8 @@
 {
   "name": "db-plus",
-  "version": "1.0.0-beta.01",
-  "main": "lib/components/index.js",
-  "module": "es/components/index.mjs",
+  "version": "1.0.1-beat.3",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
   "peerDependencies": {
     "vue": "^3.2.25"
   },
@@ -14,6 +14,9 @@
     "serve": "pnpm -C docs serve",
     "build": "ts-node scripts/build",
     "bootstrap": "ts-node scripts/bootstrap.ts",
+    "build:hooks": "pnpm -C packages/hooks build",
+    "build:config": "pnpm -C packages/config build",
+    "build:utils": "pnpm -C packages/utils build",
     "build:style": "gulp --require sucrase/register/ts",
     "build:com": "pnpm -C components build",
     "publish:ci": "ts-node scripts/publish.ts"
@@ -21,7 +24,6 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "@db-plus/hooks": "workspace:^1.0.0",
     "@types/eslint": "^8.4.5",
     "@types/gulp": "^4.0.9",
     "@types/gulp-autoprefixer": "^0.0.33",
@@ -31,6 +33,7 @@
     "@types/prettier": "^2.6.3",
     "@types/sass": "^1.43.1",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "chalk": "^4.1.2",
     "enquirer": "^2.3.6",
@@ -49,29 +52,29 @@
     "sucrase": "^3.23.0",
     "typescript": "^4.7.4",
     "unplugin-vue-components": "^0.21.1",
+    "vite": "^2.9.14",
     "vite-plugin-dts": "^1.4.0",
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@db-plus/components": "workspace:^1.0.0",
-    "@db-plus/config": "workspace:^1.0.0",
-    "@db-plus/theme-chalk": "workspace:^1.0.0",
-    "@db-plus/utils": "workspace:^1.0.0"
+    "@db-plus/config": "workspace:*",
+    "@db-plus/hooks": "workspace:*",
+    "@db-plus/utils": "workspace:*"
   },
   "engines": {
     "node": ">=14"
   },
   "exports": {
     ".": {
-      "import": "./es/components/index.mjs",
-      "require": "./lib/components/index.js"
+      "import": "./es/index.mjs",
+      "require": "./lib/index.js"
     },
-    "./es": "./es/components/index.mjs",
-    "./lib": "./lib/components/index.js",
-    "./es/*.mjs": "./es/components/*/index.mjs",
-    "./es/*": "./es/components/*/index.mjs",
-    "./lib/*.js": "./lib/components/*/index.js",
-    "./lib/*": "./lib/components/*/index.js",
+    "./es": "./es/index.mjs",
+    "./lib": "./lib/index.js",
+    "./es/*.mjs": "./es/*/index.mjs",
+    "./es/*": "./es/*/index.mjs",
+    "./lib/*.js": "./lib/*/index.js",
+    "./lib/*": "./lib/*/index.js",
     "./package.json": "./package.json",
     "./*": "./*"
   },
@@ -79,7 +82,7 @@
     "css",
     "es",
     "lib",
-    "package",
+    "packages",
     "types.d.ts"
   ],
   "keyword": [
@@ -103,5 +106,6 @@
     "css/*.css",
     "es/components/*/style.js",
     "lib/components/*/style.js"
-  ]
+  ],
+  "types": "es/components/index.d.ts"
 }

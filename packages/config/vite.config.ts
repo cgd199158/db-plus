@@ -1,16 +1,16 @@
-import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   build: {
     lib: {
-      entry: 'src/index.ts',
+      entry: 'index.ts',
       formats: ['es'],
-      fileName: () => 'index.js'
+      fileName: () => 'index.js',
     },
     rollupOptions: {
-      external: ['vue']
-    }
+      external: ['vue'],
+    },
   },
-  plugins: [dts({ rollupTypes: true })]
-})
+  plugins: [dts({ rollupTypes: true })],
+});

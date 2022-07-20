@@ -35,12 +35,12 @@ import { computed, defineProps, inject, ref } from 'vue';
 import { RightOutlined } from '@vicons/antd';
 import { collapseItemProps } from './collapse-item-types';
 import { useNamespace } from '@db-plus/hooks/index';
-import CollapseTransition from '@db-plus/components/collapse-transition/index';
-import Icon from '@db-plus/components/icon/index';
+import CollapseTransition from '../../collapse-transition/index';
+import Icon from '../../icon/index';
 import { COLLAPSE_STATE } from './types';
 
-const collapseState = inject(COLLAPSE_STATE, null);
 const props = defineProps(collapseItemProps);
+const collapseState = inject(COLLAPSE_STATE, null);
 const ns = useNamespace('collapse');
 
 const isActive = ref(props.isActive); // 当前内容区是否显示

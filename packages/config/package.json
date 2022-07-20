@@ -1,10 +1,29 @@
 {
   "name": "@db-plus/config",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "version": "1.0.1",
+  "license": "MIT",
+  "author": "cgdong",
+  "scripts": {
+    "build": "vite build"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "vue": "^3.2.6"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "vite": "^2.9.14",
+    "vite-plugin-dts": "^1.4.0",
+    "vue": "^3.2.37"
+  }
 }

@@ -86,6 +86,7 @@ export function toCamelCase(value: string) {
 const packages = [
   'db-plus',
   // 'plaground',
+  // 'packages/components',
   'packages/config',
   'packages/hooks',
   'packages/utils',

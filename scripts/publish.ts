@@ -1,6 +1,7 @@
 import { logger, run, getPackageInfo } from './utils';
+import minimist from 'minimist'
 
-const args = require('minimist')(process.argv.slice(2));
+const args = minimist(process.argv.slice(2));
 
 const inputPkg = args._[0];
 const isDryRun = args.dry || args.d;
