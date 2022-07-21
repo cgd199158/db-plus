@@ -10,5 +10,8 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
     "vite": "^2.9.14"
+  },
+  "dependencies": {
+    "db-plus": "^1.0.1-beat.4"
   }
 }

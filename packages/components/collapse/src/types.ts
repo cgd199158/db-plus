@@ -30,8 +30,8 @@ export type CollapseProps = ExtractPropTypes<typeof collapseProps>;
 
 export interface CollapseState {
   arrowType: CollapseArrowType;
-  registerPane(label: string | number, paneExpanded: Ref<boolean>): void;
-  unregisterPane(label: string | number): void;
-  expandPane(label: string | number, expanded: boolean): void;
+  registerPane: (label: string | number, paneExpanded: Ref<boolean>) => void;
+  unregisterPane: (label: string | number) => void;
+  expandPane: (label: string | number, expanded: boolean) => void;
 }
 export const COLLAPSE_STATE: InjectionKey<CollapseState> = Symbol('COLLAPSE_STATE');

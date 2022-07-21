@@ -1,10 +1,11 @@
 assets/
 icons/
-dist/
+dist
 es/
 lib/
+build/
 css
-node_modules/
+node_modules
 public/
 .husky/
 

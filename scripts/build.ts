@@ -21,6 +21,8 @@ async function main() {
 
   await run('pnpm', ['bootstrap']);
 
+  logger.withBothLn(() => logger.successText('es打包...'));
+
   await run('vite', ['build', '--config', 'vite.config.ts'], {
     stdio: 'inherit',
     env: {
@@ -31,6 +33,8 @@ async function main() {
     },
   });
 
+  logger.withBothLn(() => logger.successText('commonjs打包...'));
+
   await run('vite', ['build', '--config', 'vite.config.ts'], {
     stdio: 'inherit',
     env: {
@@ -40,6 +44,8 @@ async function main() {
       SOURCE_MAP: sourceMap ? 'true' : '',
     },
   });
+
+  logger.withBothLn(() => logger.successText('style打包...'));
 
   await run('pnpm', ['build:style']);
 

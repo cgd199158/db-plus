@@ -129,6 +129,7 @@ export async function getPackageInfo(inputPkg: string) {
     throw new Error(`Release package ${pkgName} not found`);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const pkg = require(pkgPath);
 
   if (pkg.private) {

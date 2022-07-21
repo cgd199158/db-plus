@@ -1,4 +1,9 @@
 <template>
   测试效果
-  <db-icon color="red" size="12">icon</db-icon>
+  <db-button type="primary">测试</db-button>
 </template>
+
+<script setup lang="ts">
+import { DbButton } from 'db-plus';
+import 'db-plus/css/index.css';
+</script>

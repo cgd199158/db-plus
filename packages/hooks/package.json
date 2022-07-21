@@ -15,5 +15,6 @@
   },
   "devDependencies": {
     "vue": "^3.2.37"
-  }
+  },
+  "dependencies": {}
 }

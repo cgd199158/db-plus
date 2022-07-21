@@ -36,8 +36,4 @@ const className = computed(() => {
     },
   ];
 });
-
-console.log('props', props);
 </script>
-
-<style scoped lang="scss"></style>

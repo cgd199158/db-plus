@@ -9,7 +9,5 @@
   },
   "dependencies": {
     "@db-plus/utils": "workspace:*"
-  },
-  "devDependencies": {},
-  "peerDependencies": {}
+  }
 }

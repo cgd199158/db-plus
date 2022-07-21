@@ -33,5 +33,3 @@ const colStyle = computed(() => {
   };
 });
 </script>
-
-<style scoped lang="scss"></style>

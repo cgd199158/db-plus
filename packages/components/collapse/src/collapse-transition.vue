@@ -1,5 +1,5 @@
 <template>
-  <transition :name="ns.b()" v-on="on" appear>
+  <transition :name="ns.b()" appear v-on="on">
     <slot></slot>
   </transition>
 </template>

@@ -92,17 +92,17 @@ export default defineConfig(async () => {
       ]),
       vue(),
       vueJsx(),
-      // dts({
-      //   exclude: [
-      //     'node_modules',
-      //     'packages/config',
-      //     'packages/hooks',
-      //     'package/utile',
-      //     'package/components/*/__serve__',
-      //   ],
-      //   compilerOptions: { sourceMap: sourceMap },
-      //   copyDtsFiles: false,
-      // }),
+      dts({
+        exclude: [
+          'node_modules',
+          'packages/config',
+          'packages/hooks',
+          'package/utile',
+          'package/components/*/__serve__',
+        ],
+        compilerOptions: { sourceMap: sourceMap },
+        copyDtsFiles: false,
+      }),
     ],
   };
 });

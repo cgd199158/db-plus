@@ -23,7 +23,6 @@ const Icon = defineComponent({
     return {
       mergedStyle: computed(() => {
         const { size, color } = props;
-        console.log('=========> size', size);
         return {
           fontSize: size,
           color,

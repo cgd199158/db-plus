@@ -71,5 +71,3 @@ const handlerHeader = () => {
   isActive.value = !isActive.value;
 };
 </script>
-
-<style scoped lang="scss"></style>

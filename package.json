@@ -1,6 +1,6 @@
 {
   "name": "db-plus",
-  "version": "1.0.1-beat.3",
+  "version": "1.0.1-beat.5",
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "peerDependencies": {
