@@ -6,6 +6,7 @@ import { DbCollapseTransition } from './collapse-transition/index';
 import { DbDivider } from './divider/index';
 import { DbIcon } from './icon/index';
 import { DbRow } from './row/index';
+import { DbTooltip } from './tooltip/index';
 
 import { buildInstall } from './create';
 
@@ -20,6 +21,7 @@ const components = [
   DbDivider,
   DbIcon,
   DbRow,
+  DbTooltip,
   // plugins
 ];
 
@@ -35,4 +37,5 @@ export {
   DbDivider,
   DbIcon,
   DbRow,
+  DbTooltip,
 };

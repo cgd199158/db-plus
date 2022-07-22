@@ -78,32 +78,27 @@ importers:
   docs:
     specifiers:
       '@db-plus/components': workspace:*
+      '@db-plus/config': workspace:*
       '@vicons/antd': ^0.12.0
-      db-plus: ^1.0.1-beat.4
       vue-router: ^4.1.2
     dependencies:
       '@db-plus/components': link:../packages/components
+      '@db-plus/config': link:../packages/config
       '@vicons/antd': 0.12.0
-      db-plus: 1.0.1-beat.4_vue@3.2.37
       vue-router: 4.1.2_vue@3.2.37
 
   packages/components:
     specifiers:
       '@db-plus/utils': workspace:*
-      db-plus: workspace:^1.0.1-beat.3
     dependencies:
       '@db-plus/utils': link:../utils
-      db-plus: link:../..
 
   packages/config:
     specifiers:
-      db-plus: workspace:^1.0.1-beat.3
       typescript: ^4.7.4
       vite: ^2.9.14
       vite-plugin-dts: ^1.4.0
       vue: ^3.2.37
-    dependencies:
-      db-plus: link:../..
     devDependencies:
       typescript: 4.7.4
       vite: 2.9.14_sass@1.53.0
@@ -112,24 +107,15 @@ importers:
 
   packages/hooks:
     specifiers:
-      db-plus: workspace:^1.0.1-beat.3
       vue: ^3.2.37
-    dependencies:
-      db-plus: link:../..
     devDependencies:
       vue: 3.2.37
 
   packages/theme-chalk:
-    specifiers:
-      db-plus: workspace:^1.0.1-beat.3
-    dependencies:
-      db-plus: link:../..
+    specifiers: {}
 
   packages/utils:
-    specifiers:
-      db-plus: workspace:^1.0.1-beat.3
-    dependencies:
-      db-plus: link:../..
+    specifiers: {}
 
   play:
     specifiers:
@@ -137,7 +123,7 @@ importers:
       db-plus: ^1.0.1-beat.4
       vite: ^2.9.14
     dependencies:
-      db-plus: 1.0.1-beat.4_vue@3.2.37
+      db-plus: link:..
     devDependencies:
       '@vitejs/plugin-vue': 2.3.3_vite@2.9.14+vue@3.2.37
       vite: 2.9.14_sass@1.53.0
@@ -440,32 +426,6 @@ packages:
       '@babel/helper-validator-identifier': 7.18.6
       to-fast-properties: 2.0.0
     dev: true
-
-  /@db-plus/config/1.0.1_vue@3.2.37:
-    resolution: {integrity: sha512-/4Hu76eiD6ANilEz1v6g2PiszwDTmXpzFa+sB85CAJK4bMzej2J4qeYML6xLC4XN3GcEZKJL+FWiHdh+zIstiA==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      vue: ^3.2.6
-    dependencies:
-      vue: 3.2.37
-    dev: false
-
-  /@db-plus/hooks/1.0.1_vue@3.2.37:
-    resolution: {integrity: sha512-29CKv5AFX6m3MoV1kKI/YBKvxy9nUsJD9QGXez3cRGEaVUarBlKjdSYqJ+zd4/DRHY2NlsOraR5edoduJoZoRw==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      vue: ^3.2.6
-    dependencies:
-      vue: 3.2.37
-    dev: false
-
-  /@db-plus/utils/1.0.1_vue@3.2.37:
-    resolution: {integrity: sha512-MZLthsdKyC10Z53U4hNghCT2CTJ/G1JoZUwc0ur42k+dflPMTohsUsy0XHLOMObmPKMklaUpo6ic4XOxpfpTQg==}
-    peerDependencies:
-      vue: ^3.2.6
-    dependencies:
-      vue: 3.2.37
-    dev: false
 
   /@eslint/eslintrc/1.3.0:
     resolution: {integrity: sha512-UWW0TMTmk2d7hLcWD1/e2g5HDM/HQ3csaLSqXCfqwh4uNDuNqlaKWXmEsL4Cs41Z0KnILNvwbHAah3C2yt06kw==}
@@ -1651,18 +1611,6 @@ packages:
       es5-ext: 0.10.61
       type: 1.2.0
     dev: true
-
-  /db-plus/1.0.1-beat.4_vue@3.2.37:
-    resolution: {integrity: sha512-Eg57Ji9Ail7dI+INDvI9rXV7f1vlhf9mAn93lctmmmdimSwqBvq9z0zxVGoyQ67aLdDHkFb2HkTIT4xfRuQIJg==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      vue: ^3.2.25
-    dependencies:
-      '@db-plus/config': 1.0.1_vue@3.2.37
-      '@db-plus/hooks': 1.0.1_vue@3.2.37
-      '@db-plus/utils': 1.0.1_vue@3.2.37
-      vue: 3.2.37
-    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -4744,7 +4692,7 @@ packages:
     resolution: {integrity: sha512-RyDCjQzVxUeDqF+Rl1hQT+t/rKmvfvo04gaGV/l3597FpeIWGKtNF1S4x509Kx1AfHOjLa1JdmjVgnSEIv+lpw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
-      vite: '>=2.4.4 || ^3.0.0'
+      vite: '>=2.4.4 || ^3.0.0 || ^3.0.0'
     dependencies:
       '@microsoft/api-extractor': 7.28.4
       '@rushstack/node-core-library': 3.49.0

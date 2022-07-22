@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     DbCollapseItem: typeof import('../../../packages/components/collapse-item/index')['default']
     DbDivider: typeof import('../../../packages/components/divider/index')['default']
     DbIcon: typeof import('../../../packages/components/icon/index')['default']
+    DbTooltip: typeof import('../../../packages/components/tooltip/index')['default']
     Layout: typeof import('./../components/layout/index.vue')['default']
     Provider: typeof import('./../components/provider/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
