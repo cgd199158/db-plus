@@ -8,6 +8,7 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@db-plus/utils": "workspace:*"
+    "@db-plus/utils": "workspace:*",
+    "@popperjs/core": "^2.11.5"
   }
 }

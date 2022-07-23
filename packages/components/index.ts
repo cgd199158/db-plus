@@ -7,6 +7,8 @@ import { DbDivider } from './divider/index';
 import { DbIcon } from './icon/index';
 import { DbRow } from './row/index';
 import { DbTooltip } from './tooltip/index';
+import { DbDropDown } from './dropdown/index';
+import { DbPortal } from './portal/index';
 
 import { buildInstall } from './create';
 
@@ -22,6 +24,8 @@ const components = [
   DbIcon,
   DbRow,
   DbTooltip,
+  DbDropDown,
+  DbPortal,
   // plugins
 ];
 
@@ -38,4 +42,6 @@ export {
   DbIcon,
   DbRow,
   DbTooltip,
+  DbDropDown,
+  DbPortal,
 };

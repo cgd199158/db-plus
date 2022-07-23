@@ -1,0 +1,119 @@
+@use 'sass:map';
+@use './common/mixins.scss' as *;
+@use './common/var.scss' as *;
+
+$dropdown: () !default;
+$dropdown: map.merge(
+  (
+    popper-z-index: getCssVar('z-index-popper'),
+    color-selected: getCssVar('color-primary-base'),
+    color-disabled: getCssVar('content-color-disabled'),
+    bg-color: getCssVar('bg-color-base'),
+    bg-color-hover: getCssVar('fill-color-hover'),
+    bg-color-active: getCssVar('dropdown-bg-color-hover'),
+    b-color: getCssVar('border-color-light-2'),
+    border: getCssVar('border-shape') getCssVar('dropdown-b-color'),
+    radius: getCssVar('radius-base'),
+    s-color: getCssVar('shadow-color-base'),
+    shadow: getCssVar('shadow-shape') getCssVar('dropdown-s-color'),
+    d-color: getCssVar('border-color-light-2'),
+    divider: getCssVar('border-shape') getCssVar('dropdown-d-color'),
+  ),
+  $dropdown
+);
+
+.#{$namespace}-dropdown {
+  &-vars {
+    @include definePresetValues('dropdown', $dropdown);
+  }
+
+  @include basis;
+
+  display: inline-block;
+
+  &__trigger {
+    display: flex;
+    min-width: 100%;
+    height: 100%;
+  }
+
+  &__popper {
+    @include basis;
+
+    z-index: getCssVar('dropdown-popper-z-index');
+    display: flex;
+    padding: 5px 0;
+
+    &--nested {
+      padding: 0;
+    }
+  }
+
+  & &,
+  &__popper & {
+    width: 100%;
+  }
+
+  &__list {
+    display: inline-block;
+    min-width: 70px;
+    padding: 5px 0;
+    margin: 0;
+    user-select: none;
+    background-color: getCssVar('dropdown-bg-color');
+    border: getCssVar('dropdown-border');
+    border-radius: getCssVar('dropdown-radius');
+    box-shadow: getCssVar('dropdown-shadow');
+  }
+
+  &__item {
+    position: relative;
+    min-height: 32px;
+    padding: 5px 16px;
+    white-space: nowrap;
+    list-style: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: getCssVar('transition-background');
+
+    &:hover {
+      background-color: getCssVar('dropdown-bg-color-hover');
+    }
+
+    &--selected {
+      color: getCssVar('dropdown-color-selected');
+    }
+
+    &--disabled {
+      color: getCssVar('dropdown-color-disabled');
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    &--divided {
+      margin-bottom: 10px;
+
+      &::after {
+        position: absolute;
+        bottom: calc(-5px - 0.5px);
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 0;
+        content: '';
+        border-bottom: getCssVar('dropdown-divider');
+      }
+    }
+  }
+
+  &__trigger &__item {
+    width: 100%;
+  }
+
+  &__trigger--active &__item {
+    background-color: getCssVar('dropdown-bg-color-active');
+  }
+}

@@ -90,8 +90,10 @@ importers:
   packages/components:
     specifiers:
       '@db-plus/utils': workspace:*
+      '@popperjs/core': ^2.11.5
     dependencies:
       '@db-plus/utils': link:../utils
+      '@popperjs/core': 2.11.5
 
   packages/config:
     specifiers:
@@ -556,6 +558,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@popperjs/core/2.11.5:
+    resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
+    dev: false
 
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -4692,7 +4698,7 @@ packages:
     resolution: {integrity: sha512-RyDCjQzVxUeDqF+Rl1hQT+t/rKmvfvo04gaGV/l3597FpeIWGKtNF1S4x509Kx1AfHOjLa1JdmjVgnSEIv+lpw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
-      vite: '>=2.4.4 || ^3.0.0 || ^3.0.0'
+      vite: '>=2.4.4 || ^3.0.0'
     dependencies:
       '@microsoft/api-extractor': 7.28.4
       '@rushstack/node-core-library': 3.49.0
