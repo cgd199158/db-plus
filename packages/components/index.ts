@@ -9,6 +9,7 @@ import { DbRow } from './row/index';
 import { DbTooltip } from './tooltip/index';
 import { DbDropDown } from './dropdown/index';
 import { DbPortal } from './portal/index';
+import { DbInput } from './input/index';
 
 import { buildInstall } from './create';
 
@@ -26,6 +27,7 @@ const components = [
   DbTooltip,
   DbDropDown,
   DbPortal,
+  DbInput,
   // plugins
 ];
 
@@ -44,4 +46,5 @@ export {
   DbTooltip,
   DbDropDown,
   DbPortal,
+  DbInput,
 };

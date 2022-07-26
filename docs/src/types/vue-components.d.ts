@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     DbDivider: typeof import('../../../packages/components/divider/index')['default'];
     DbIcon: typeof import('../../../packages/components/icon/index')['default'];
     DbDropdown: typeof import('../../../packages/components/dropdown/index')['default'];
+    DbInput: typeof import('../../../packages/components/input/index')['default'];
     DbTooltip: typeof import('../../../packages/components/tooltip/index')['default'];
     Layout: typeof import('./../components/layout/index.vue')['default'];
     Provider: typeof import('./../components/provider/index.vue')['default'];
